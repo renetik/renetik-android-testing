@@ -1,2 +1,2 @@
-include ':renetik-android-core' 
-project(':renetik-android-core').projectDir = file("library")
+include ':renetik-android-testing'
+project(':renetik-android-testing').projectDir = file("library")
