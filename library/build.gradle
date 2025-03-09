@@ -3,7 +3,7 @@ if (rootProject.ext.is_renetik_library_module) apply from: '../library.gradle'
 else apply from: '../../library.gradle'
 dependencies {
     api "junit:junit:4.13.2"
-    api 'io.mockk:mockk:1.13.14'
+    api 'io.mockk:mockk:1.13.17'
     api 'org.robolectric:robolectric:4.14.1'
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.1'
 }
