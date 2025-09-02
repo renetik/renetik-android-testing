@@ -4,6 +4,6 @@ else apply from: '../../library.gradle'
 dependencies {
     api "junit:junit:4.13.2"
     api 'io.mockk:mockk:1.14.5'
-    api 'org.robolectric:robolectric:4.15.1'
+    api 'org.robolectric:robolectric:4.16'
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2'
 }
