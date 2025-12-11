@@ -67,7 +67,7 @@ sample-renetik-android.aab
 
 #native
 ** /.cxx
-/renetik-instruments-app/release/output-metadata.json
+/renetik-app-app/release/output-metadata.json
 
 /.idea
 /.kotlin/
