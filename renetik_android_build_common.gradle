@@ -1,42 +1,29 @@
 buildscript {
     ext {
-        renetik_android_core = "com.renetik.library:renetik-android-core:$renetik_library_version"
-        renetik_android_event = "com.renetik.library:renetik-android-event:$renetik_library_version"
-        renetik_android_json = "com.renetik.library:renetik-android-json:$renetik_library_version"
-        renetik_android_store = "com.renetik.library:renetik-android-store:$renetik_library_version"
-        renetik_android_preset = "com.renetik.library:renetik-android-preset:$renetik_library_version"
-        renetik_android_ui = "com.renetik.library:renetik-android-ui:$renetik_library_version"
-        renetik_android_framework = "com.renetik.library:renetik-android-framework:$renetik_library_version"
-        sdk_version = 35
-        min_sdk_version = 26
-        appcompat_version = '1.7.1'
-        material_version = '1.12.0'
-        ktx_version = '1.18.0'
-        junit_version = '4.13.2'
-        play_version = '18.0.1'
-        kotlin_version = '2.3.21'
+        sdk_version = property('sdk_version').toInteger()
+        min_sdk_version = property('min_sdk_version').toInteger()
+        appcompat_version = property('appcompat_version')
+        ktx_version = property('ktx_version')
+        junit_version = property('junit_version')
+        mockk_version = property('mockk_version')
+        robolectric_version = property('robolectric_version')
+        coroutines_version = property('coroutines_version')
+        kotlin_version = property('kotlin_version')
         is_renetik_library_release = project.properties["renetik_library_release"] == "true"
         is_renetik_library_module = project.properties["renetik_library_release"] == "true"
     }
-//    configurations.all {
-//        resolutionStrategy.cacheDynamicVersionsFor 1, 'minutes'
-//        resolutionStrategy.cacheChangingModulesFor 1, 'minutes'
-//    }
 }
+
 allprojects {
     repositories {
         mavenLocal()
         google()
-        jcenter()
-        maven { url = 'https://github.com/renetik/maven-snapshot/raw/master/repository' }
-        maven { url = 'https://github.com/renetik/maven/raw/master/repository' }
+        mavenCentral()
+        maven { url = 'https://jitpack.io' }
     }
-//    configurations.all {
-//        resolutionStrategy.cacheDynamicVersionsFor 1, 'minutes'
-//        resolutionStrategy.cacheChangingModulesFor 1, 'minutes'
-//    }
 }
+
 wrapper {
-    gradleVersion = "8.7"
-    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = project.property('gradle_wrapper_version')
+    distributionType = Wrapper.DistributionType.BIN
 }

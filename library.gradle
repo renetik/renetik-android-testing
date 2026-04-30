@@ -1,8 +1,5 @@
 apply plugin: 'com.android.library'
-if (rootProject.ext.is_renetik_library_release) {
-    apply plugin: 'maven-publish'
-    apply plugin: 'org.jetbrains.dokka'
-}
+apply plugin: 'maven-publish'
 
 android {
     namespace rootProject.ext.namespace
@@ -11,10 +8,15 @@ android {
         targetCompatibility JavaVersion.VERSION_21
     }
     kotlin { jvmToolchain(21) }
-    compileSdk = project.properties.sdk_version
+    compileSdk = rootProject.ext.sdk_version
     defaultConfig {
-        minSdkVersion  project.properties.min_sdk_version
-        targetSdkVersion   project.properties.sdk_version
+        minSdkVersion rootProject.ext.min_sdk_version
+        targetSdkVersion rootProject.ext.sdk_version
+    }
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
     }
     testOptions {
         unitTests.all {
@@ -40,31 +42,16 @@ dependencies {
     implementation "androidx.core:core-ktx:$ktx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
 }
-if (rootProject.ext.is_renetik_library_release) {
-//    tasks.register('sourceJar', Jar) {
-//        archiveClassifier.set('sources')
-//        from android.sourceSets.main.java.srcDirs
-//    }
-//    afterEvaluate {
+
+afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId 'com.renetik.library'
+                groupId 'com.github.renetik'
                 artifactId project.name
-                version = project.renetik_library_version
-                artifact sourceJar {
-                    classifier 'sources'
-                    from android.sourceSets.main.java.srcDirs
-                }
-
-                artifact dokkaHtml.outputDirectory
+                version = rootProject.property('renetik_library_version')
             }
         }
-    }
-//    }
-    dokkaHtml {
-        outputDirectory = file("${projectDir}/../docs")
-        dokkaSourceSets { configureEach { includes.from("../README.md") } }
     }
 }
