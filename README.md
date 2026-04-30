@@ -1,5 +1,7 @@
 # Renetik Android Testing
 
+[![Android Build](https://github.com/renetik/renetik-android-testing/actions/workflows/android.yml/badge.svg)](https://github.com/renetik/renetik-android-testing/actions/workflows/android.yml)
+
 Shared Android test dependencies and helpers for Renetik Android libraries.
 
 ## Installation
