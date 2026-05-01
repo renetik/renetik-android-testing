@@ -1,14 +1,14 @@
 buildscript {
     ext {
-        sdk_version = property('sdk_version').toInteger()
-        min_sdk_version = property('min_sdk_version').toInteger()
-        appcompat_version = property('appcompat_version')
-        ktx_version = property('ktx_version')
-        junit_version = property('junit_version')
-        mockk_version = property('mockk_version')
-        robolectric_version = property('robolectric_version')
-        coroutines_version = property('coroutines_version')
-        kotlin_version = property('kotlin_version')
+        sdk_version = 36
+        min_sdk_version = 26
+        appcompat_version = "1.7.1"
+        ktx_version = "1.18.0"
+        junit_version = "4.13.2"
+        mockk_version = "1.14.9"
+        robolectric_version = "4.16.1"
+        coroutines_version = "1.10.2"
+        kotlin_version = "2.3.21"
         is_renetik_library_release = project.properties["renetik_library_release"] == "true"
         is_renetik_library_module = project.properties["renetik_library_release"] == "true"
     }
@@ -24,6 +24,6 @@ allprojects {
 }
 
 wrapper {
-    gradleVersion = project.property('gradle_wrapper_version')
+    gradleVersion = "9.4.1"
     distributionType = Wrapper.DistributionType.BIN
 }

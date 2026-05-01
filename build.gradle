@@ -1,21 +1,12 @@
 apply from: 'renetik_android_build_common.gradle'
 
 buildscript {
-    ext {
-        kotlin_version = property('kotlin_version')
-        android_gradle_plugin_version = property('android_gradle_plugin_version')
-    }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$android_gradle_plugin_version"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:9.2.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.21"
     }
-}
-
-wrapper {
-    gradleVersion = project.property('gradle_wrapper_version')
-    distributionType = Wrapper.DistributionType.BIN
 }
