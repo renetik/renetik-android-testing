@@ -9,8 +9,7 @@ buildscript {
         robolectric_version = "4.16.1"
         coroutines_version = "1.10.2"
         kotlin_version = "2.3.21"
-        is_renetik_library_release = project.properties["renetik_library_release"] == "true"
-        is_renetik_library_module = project.properties["renetik_library_release"] == "true"
+        is_renetik_development = false
     }
 }
 

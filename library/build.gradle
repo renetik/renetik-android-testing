@@ -1,6 +1,6 @@
 rootProject.ext.namespace = 'renetik.android.testing'
-if (rootProject.ext.is_renetik_library_module) apply from: '../library.gradle'
-else apply from: '../../library.gradle'
+if (rootProject.ext.is_renetik_development) apply from: '../../library.gradle'
+else apply from: '../library.gradle'
 dependencies {
     api "junit:junit:$junit_version"
     api "io.mockk:mockk:$mockk_version"
