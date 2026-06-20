@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
+group = providers.gradleProperty('group').getOrElse('com.github.renetik')
+version = providers.gradleProperty('version').getOrElse('LOCAL')
+
 android {
     namespace rootProject.ext.namespace
     compileOptions {
@@ -48,9 +51,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId 'com.github.renetik'
                 artifactId project.name
-                version = "1.0.0"
             }
         }
     }

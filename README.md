@@ -23,15 +23,15 @@ Add the testing artifact to test dependencies:
 
 ```gradle
 dependencies {
-    testImplementation 'com.github.renetik:renetik-android-testing:1.0.0'
+    testImplementation 'com.github.renetik:renetik-android-testing:1.0.1'
 }
 ```
 
 ## Compatibility
 
 - Java: 21
-- Gradle wrapper: 9.4.1
-- Android Gradle Plugin: 9.2.0
+- Gradle wrapper: 9.5.0
+- Android Gradle Plugin: 9.2.1
 - Kotlin: 2.3.21
 - compileSdk: 36
 - minSdk: 26
@@ -45,8 +45,10 @@ dependencies {
 
 ## Release
 
-Publishable builds use the release Android variant with a sources jar:
+Commit all intended release changes, make sure the `master` working tree is clean, then pass the new version to the release script:
 
 ```sh
-./gradlew clean build publishToMavenLocal --no-daemon
+./release.sh 1.0.1
 ```
+
+The script validates the version and repository state, builds and publishes the release locally with the requested coordinates, pushes `master`, and creates the matching GitHub release and tag. JitPack then builds that tag on demand.
