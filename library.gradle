@@ -5,7 +5,7 @@ group = providers.gradleProperty('group').getOrElse('com.github.renetik')
 version = providers.gradleProperty('version').getOrElse('LOCAL')
 
 android {
-    namespace rootProject.ext.namespace
+    namespace = rootProject.ext.namespace
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_21
         targetCompatibility JavaVersion.VERSION_21
@@ -13,8 +13,7 @@ android {
     kotlin { jvmToolchain(21) }
     compileSdk = rootProject.ext.sdk_version
     defaultConfig {
-        minSdkVersion rootProject.ext.min_sdk_version
-        targetSdkVersion rootProject.ext.sdk_version
+        minSdk = rootProject.ext.min_sdk_version
     }
     publishing {
         singleVariant('release') {
@@ -34,9 +33,11 @@ android {
             }
         }
     }
-    packagingOptions {
-        exclude 'META-INF/LICENSE.md'
-        exclude 'META-INF/LICENSE-notice.md'
+    packaging {
+        resources {
+            excludes += ['META-INF/LICENSE.md',
+                         'META-INF/LICENSE-notice.md']
+        }
     }
 }
 dependencies {
@@ -51,7 +52,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                artifactId project.name
+                artifactId = project.name
             }
         }
     }
